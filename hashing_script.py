@@ -1,13 +1,10 @@
 import hashlib
-
-def hashing_script(test):
-    opened = open(test)
+def hashing_script(path):
+    opened = open(path)
     readfile = opened.read()
-
     hash = hashlib.sha1(readfile)
-    sha1hashed = hash.hexdigest()
-
-    print ("File Name: {}".format(test))
-    print ("SHA1: {}".format(sha1hashed))
+    sha = hash.hexdigest()
+    print ("File Name: {}".format(path))
+    print ("SHA1: {}".format(sha))
     opened.close()
-    return sha1hashed
+    return sha
