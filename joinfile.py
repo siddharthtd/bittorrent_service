@@ -20,10 +20,15 @@ def joinfile(fromdir,destfile):
 
 def main():
     fromdir= raw_input('enter the directory from where file has to be joined: ')
-    destfile=raw_input('name of the file to be created: ')
+    filename= 'filename'
+    destfile= '{0}.zip'.format(filename)
     try: joinfile(fromdir,destfile)
     except: print'join failed'
     else: print 'join complete'
 
+    fileList = os.listdir(fromdir)
+    for fileName in fileList:
+        os.remove(fromdir + "/" + fileName)
+    print' directory deleted'
 main()
 
