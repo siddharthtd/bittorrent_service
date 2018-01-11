@@ -11,6 +11,7 @@ def findfile(name,path):
             return filepos
         else: return 'file not found'
 
+    return
 
 #returns the postion of the file in the directory
 
