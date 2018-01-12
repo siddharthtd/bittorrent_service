@@ -2,12 +2,19 @@ import os
 
 
 
+#********************************************************************************************************************
+#SPLIT FILE
+#input required : filepos, chunksize
+
 # A basic model of splitting a file is drawn which would be later updated as per reqirement
 #split a file into a set of portions which will be used by p2p application to determine which parts to be sent.
 #These file once recived will be joint back to the original format
+
+
+
 def splitfile():#filepos, destpos,chunksize):
     filepos = raw_input('enter the postion of file to be split: ')
-    destpos = raw_input('enter the position of destination folder: ')
+    destpos = '/home/deepak/PycharmProjects/bittorrent_service/splits'
     data_size = os.path.getsize(filepos)  # geet size of data at file to be split
     chunksize = data_size / 4  # split file into 5 pieces
 
@@ -18,8 +25,7 @@ def splitfile():#filepos, destpos,chunksize):
             chunk = input.read(chunksize)  # read only the chunksized amount of data in chunk variable
             if not chunk: break
             partnum = partnum + 1  # increment partnum by 1 everytime a chunk is updated
-            filename = os.path.join(destpos, (
-            'part%0d' % partnum))  # create a binary file called filename at destination directory
+            filename = os.path.join(destpos, ('part%0d' % partnum))  # create a binary file called filename at destination directory
             fileobj = open(filename, 'wb')  # open the file 'filename' in binary write mode
             fileobj.write(chunk)  # writh chunk data in the file
             fileobj.close()
@@ -32,13 +38,15 @@ def splitfile():#filepos, destpos,chunksize):
         print' error splitting'
         return
 
-    return
+#*********************************************************************************************************************
 
 
+#JOIN FILE
+#INPUTS REQUIRED: FILENAME TO BE JOINT
 
 #a basic model of joining a multiple splitted file back to the original format
-def joinfile():#fromdir, destfile):
-    fromdir = raw_input('enter the directory from where file has to be joined: ')
+def joinfile():#destfile):
+    fromdir = '/home/deepak/PycharmProjects/bittorrent_service/splits'
     filename = 'filename'
     destfile = '{0}.zip'.format(filename)
     try:
@@ -50,8 +58,7 @@ def joinfile():#fromdir, destfile):
             filepath = os.path.join(fromdir, filename)  # create a directory
             fileobj = open(filepath, 'rb')  # open the file in that directory in biinary read mode
             while 1:
-                filesizebytes = fileobj.read(
-                    readsize)  # read data from  the parts at 1023 bits per read. This is done to prevent memory congestion
+                filesizebytes = fileobj.read(readsize)  # read data from  the parts at 1023 bits per read. This is done to prevent memory congestion
                 if not filesizebytes: break
                 outputfile.write(filesizebytes)  # write the data in the named file
             fileobj.close()
@@ -70,5 +77,4 @@ def joinfile():#fromdir, destfile):
 
     return
 
-
-joinfile(
+#*****************************************************************************************************************
