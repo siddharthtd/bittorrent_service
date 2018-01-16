@@ -1,5 +1,5 @@
 #getting list of all the files in the directory and returning path and size of the file in the disctionary format
-#input : Path of file on the system
+#input : Path of file on the system. doesn't work with finding directory
 #return: disctionary 'filedetails'
 
 import os
