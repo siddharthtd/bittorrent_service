@@ -6,4 +6,6 @@ def hashing_script(path):
     sha = hash.hexdigest()
     print ("File Name: {}".format(path))
     opened.close()
+    print sha
     return sha
+hashing_script(r'C:\Users\Deepak\Desktop\1.png')

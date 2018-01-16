@@ -3,7 +3,7 @@ import socket
 
 def listensocket(): #port
     host='' #generic name
-    port= 10
+    port= 8888
     backlog=10 #Number of requests to be queued
     connection=socket.socket(socket.AF_INET,socket.SOCK_STREAM) #creating a socket that communicates with IPv4 protocol and TCP
     connection.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1) #setting socket option: value 1 to make the port reuasabe after every 1 exit.
@@ -20,6 +20,8 @@ def listensocket(): #port
         conn,addr= connection.accept()
         print 'connected with '+ addr[0]+':'+str(addr[1])
     connection.close()
+
+
 
     return connection
 listensocket()
