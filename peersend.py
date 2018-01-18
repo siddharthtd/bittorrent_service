@@ -6,7 +6,7 @@ import os
 def listenport():
     s=socket.socket()
     host=socket.gethostname()
-    port=8882
+    port=8883
 
     s.connect((host,port)) #connect to the host
     filename='Documents'+'.zip'
@@ -19,7 +19,7 @@ def listenport():
         try:
             s.send(l)
             print ('Sent',repr(l))
-            l=f.read(1024)
+            l=f.read(1023)
         except KeyboardInterrupt:
             print' interruppted'
     f.close()

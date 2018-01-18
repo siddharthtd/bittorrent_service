@@ -2,10 +2,16 @@
 #the server connects to the peer, receives file from peer and save it at the given location
 import socket
 import os
+from threading import Thread
+from SocketServer import ThreadingMixIn
+
+class ServerThread(Thread):
+    def __init__(self,ip,port):
 
 def listensocket(): #port
     host=socket.gethostname() #gethostname
-    port= 8882
+    port= 8883
+
     backlog=10 #Number of requests to be queued
     connection=socket.socket(socket.AF_INET,socket.SOCK_STREAM) #creating a socket that communicates with IPv4 protocol and TCP
     connection.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1) #setting socket option: value 1 to make the port reuasabe after every 1 exit.
@@ -19,8 +25,8 @@ def listensocket(): #port
     print' server listening'
     print 'host listening on '+str(connection)
     while 1:
-        conn,addr= connection.accept()
-        print 'connected with '+ addr[0]+':'+str(addr[1])
+        conn,(ipaddr,portnum)= connection.accept()
+        print 'connected with '+ ipaddr+':'+str(portnum)
         receivefile(conn)
     connection.close()
 
