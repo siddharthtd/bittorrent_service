@@ -5,6 +5,7 @@
 #return: disctionary 'filedetails'
 
 import os
+import testdb
 
 def filedetails(path):
     dir = os.listdir(path) #get list of all files from path
@@ -17,8 +18,8 @@ def filedetails(path):
 
         fileprop.update({'name':files,'path':filepos,'size':filesize})
         print fileprop
-        #testdb.addvalues(fileprop)
-        print 'done'
+        testdb.addvalues(fileprop)
+    print 'done'
 
 
     return
