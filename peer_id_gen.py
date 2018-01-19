@@ -1,3 +1,4 @@
 import uuid
-key = uuid.uuid4().hex[:10]
-print (key)
+def peer_id():
+    key = uuid.uuid4().hex[:10]
+    return key
