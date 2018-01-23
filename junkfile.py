@@ -10,6 +10,7 @@ def filedetails(path):
     if (result== False):
         print 'generating new file details section'
         peerid= peer_id_gen.peer_id()
+        print ' peer id gen method getting executed'
         for files in dir:
             filepos = os.path.join(path, files)
             filesize = os.path.getsize(filepos)  # get file size
@@ -21,6 +22,7 @@ def filedetails(path):
 
 
 def checkresult(fileprop,files):
+            print ' check results executing'
             result = testdb.checkvalues(fileprop)
             while (result== False):
                 print'new peer id accepted'
@@ -33,6 +35,7 @@ def checkresult(fileprop,files):
                 filesize=fileprop['size']
                 fileprop.update({'name': files, 'peerid': peerid, 'size': filesize})
                 testdb.checkvalues(fileprop)
+
                 checkresult(fileprop,files)
                 return
 
