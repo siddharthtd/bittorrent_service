@@ -6,7 +6,8 @@ from threading import Thread
 from SocketServer import ThreadingMixIn
 
 class ServerThread(Thread):
-    def __init__(self,ip,port):
+    def __init__(self,ipaddr,portnum):
+
 
 def listensocket(): #port
     host=socket.gethostname() #gethostname
